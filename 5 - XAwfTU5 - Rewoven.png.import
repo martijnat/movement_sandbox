@@ -1,0 +1,33 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/5 - XAwfTU5 - Rewoven.png-cd8a464fa46613566db87a8b8c96f371.s3tc.stex"
+path.etc2="res://.import/5 - XAwfTU5 - Rewoven.png-cd8a464fa46613566db87a8b8c96f371.etc2.stex"
+
+[deps]
+
+source_file="res://5 - XAwfTU5 - Rewoven.png"
+source_md5="23f0316138e0bcacf6ccbfd587784bfe"
+
+dest_files=[ "res://.import/5 - XAwfTU5 - Rewoven.png-cd8a464fa46613566db87a8b8c96f371.s3tc.stex", "res://.import/5 - XAwfTU5 - Rewoven.png-cd8a464fa46613566db87a8b8c96f371.etc2.stex" ]
+dest_md5="1324fb5ceb2e4f342ddae9d5adf5e74a"
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/normal_map=1
+flags/repeat=true
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0
