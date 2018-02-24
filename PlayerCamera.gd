@@ -1,10 +1,10 @@
 extends Camera
 
 
-var camera_height = 5
-var camera_dist = 10
-var camera_min_dist = 5
-var camera_smoothing = 0.1
+var camera_height = 10
+var camera_max_dist = 10
+var camera_min_dist = 10
+
 var camera_speed = 30
 var offset = Vector3(0,0,0)
 
@@ -45,9 +45,16 @@ func update_camera(dt):
     var player_pos = get_parent().get_node("Player").get_global_transform().origin
     var player_overhead = player_pos + Vector3(0,camera_height,0)
     var new_pos = get_global_transform().origin+offset
+    var new_dist = (new_pos-player_overhead).length()
+
     var camera_overhead_dir = (new_pos-player_overhead).normalized()
     camera_overhead_dir.y = min(0.7,max(-0.5,camera_overhead_dir.y))
-    new_pos = player_overhead + camera_dist*camera_overhead_dir.normalized()
+
+    if new_dist > camera_max_dist:
+        new_pos = player_overhead + camera_max_dist*camera_overhead_dir.normalized()
+    if new_dist < camera_min_dist:
+        new_pos = player_overhead + camera_min_dist*camera_overhead_dir.normalized()
+
     offset = Vector3(0,0,0)
     look_at_from_position(new_pos,player_pos,Vector3(0,1,0))
 
