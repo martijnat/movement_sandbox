@@ -13,6 +13,7 @@ var camera_distance_max = 20
 var velocity = Vector3(0,0,0)
 var direction = Vector3(1,0,0)
 var last_direction = Vector3(1,0,0)
+var previously_airborne = false
 
 var move_speed = 30
 var move_accel = 5
@@ -82,10 +83,16 @@ func move(dt):
 
     if is_on_floor():
         jumps_left = max_jumps
+        if previously_airborne:
+            get_node("LandSound").play()
+            previously_airborne = false
+    else:
+        previously_airborne = true
 
     if Input.is_action_just_pressed("jump") and jumps_left>0:
         velocity.y = jump_strength
         jumps_left-=1
+        get_node("JumpSound").play()
 
     if  get_global_transform().origin.y < pit_depth:
         var move_amount = reset_position - get_global_transform().origin

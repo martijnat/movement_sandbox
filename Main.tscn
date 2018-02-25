@@ -107,7 +107,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Background", "Glow/levels" ]
 
-[node name="Main" type="Spatial"]
+[node name="Main" type="Spatial" index="0"]
 
 script = ExtResource( 1 )
 
@@ -204,15 +204,20 @@ transform = Transform( 35.6538, -0.413972, 0, 2.33915, 6.30986, 0, 0, 0, 6.01452
 
 transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, -32.7988, -0.905418, 2.12514 )
 
-[node name="Cube5" parent="." index="17" instance=ExtResource( 4 )]
+[node name="Cube18" parent="." index="17" instance=ExtResource( 4 )]
+
+transform = Transform( 1, 0, 0, 0, 8, 0, 0, 0, 1, 28.937, 16.0239, -42.0959 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Cube5" parent="." index="18" instance=ExtResource( 4 )]
 
 transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, -32.7988, -0.905418, -15.3486 )
 
-[node name="Cube6" parent="." index="18" instance=ExtResource( 4 )]
+[node name="Cube6" parent="." index="19" instance=ExtResource( 4 )]
 
 transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, -13.6641, -0.905418, -15.3486 )
 
-[node name="PlayerCamera" type="Camera" parent="." index="19"]
+[node name="PlayerCamera" type="Camera" parent="." index="20"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198284, 5.69647, 6.12012 )
 keep_aspect = 1
@@ -230,23 +235,23 @@ far = 100.0
 script = ExtResource( 5 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Pillshape" parent="." index="20" instance=ExtResource( 6 )]
+[node name="Pillshape" parent="." index="21" instance=ExtResource( 6 )]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37346, 0, -13.4425 )
 
-[node name="Pillshape2" parent="." index="21" instance=ExtResource( 6 )]
+[node name="Pillshape2" parent="." index="22" instance=ExtResource( 6 )]
 
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 4.37346, 0, -33.1437 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Pillshape3" parent="." index="22" instance=ExtResource( 6 )]
+[node name="Pillshape3" parent="." index="23" instance=ExtResource( 6 )]
 
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 4.37346, 0, -45.6222 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Cube17" parent="." index="23" instance=ExtResource( 4 )]
+[node name="Cube17" parent="." index="24" instance=ExtResource( 4 )]
 
-transform = Transform( 11.3137, -11.3137, 0, 8, 8, -11.3137, 8, 8, 11.3137, 32.9699, 0, -40.1871 )
+transform = Transform( 16, 0, 0, 0, 16, 0, 0, 0, 16, 32.9699, -11.6317, -40.1871 )
 _sections_unfolded = [ "Transform" ]
 
 

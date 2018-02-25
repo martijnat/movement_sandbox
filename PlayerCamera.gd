@@ -14,6 +14,7 @@ var autoturn_speed = camera_speed*0.5
 var offset = Vector3(0,0,0)
 var up = Vector3(0, 1, 0)
 var camera_dampening = 0.5
+var mouselook_speed = 0.07
 
 func _ready():
     collision_exception.append(get_parent().get_node("Player"))
@@ -22,6 +23,12 @@ func _ready():
 func _physics_process(dt):
     update_camera(dt)
     move(dt)
+
+func _input(event):
+    var aim = get_global_transform().basis
+    if event is InputEventMouseMotion:
+        offset -= aim.x * (mouselook_speed * event.relative.x)
+        offset += aim.y * (mouselook_speed * event.relative.y)
 
 func move(dt):
     var direction = Vector3(0,0,0)
