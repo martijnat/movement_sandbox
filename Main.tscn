@@ -105,9 +105,9 @@ adjustment_enabled = false
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
-_sections_unfolded = [ "Ambient Light", "Background", "Glow", "Glow/levels", "Tonemap" ]
+_sections_unfolded = [ "Background", "Glow/levels" ]
 
-[node name="Main" type="Spatial" index="0"]
+[node name="Main" type="Spatial"]
 
 script = ExtResource( 1 )
 
@@ -190,7 +190,7 @@ transform = Transform( 35.7305, 0, 0, 0, 1, 0, 0, 0, 6.24794, 56.013, -0.905418,
 
 [node name="Cube10" parent="." index="13" instance=ExtResource( 4 )]
 
-transform = Transform( 35.7066, 0, 0.0954554, 0, 1, 0, -1.30575, 0, 2.61029, 56.013, 7.94779, 2.12514 )
+transform = Transform( 35.7066, 0, 0.0954554, 0, 1, 0, -1.30575, 0, 2.61029, 56.013, 7.94779, 3.9169 )
 
 [node name="Cube11" parent="." index="14" instance=ExtResource( 4 )]
 

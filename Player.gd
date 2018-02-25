@@ -40,7 +40,7 @@ func _physics_process(dt):
 func move(dt):
     direction = Vector3(0,0,0)
     var up = Vector3(0, 1, 0)
-    var aim =  get_parent().get_node("PlayerCamera").get_global_transform().basis
+    var aim = get_parent().get_node("PlayerCamera").get_global_transform().basis
 
     aim.z.y = 0
     aim.z = aim.z.normalized()
