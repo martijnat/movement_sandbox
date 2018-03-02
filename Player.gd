@@ -26,17 +26,45 @@ var jump_strength = 50
 var roll_speed = 0.007
 
 var pit_depth = -50
-var reset_position = Vector3(0,100,0)
+var checkpoint = Vector3(0,100,0)
+var bounce_factor = 1.0
+var min_bounce_speed = 30
+var coins_max = 99
+var coins_collected = 0
+var coin_odd_collection = true
+var coin_wiggle = 4
 
 func _ready():
-    # Called every time the node is added to the scene.
-    # Initialization here
-    pass
+    collect_coin(0)
+    checkpoint = get_global_transform().origin
 
+func collect_coin(amount):
+    if amount>0:
+#        if coins_collected==0:
+#            get_node("background_music").autoplay = true
+#            get_node("background_music").play()
+        get_node("CoinSound").play()
+        coins_collected+=amount
+    get_parent().get_node("CoinText").clear()
+    if coin_odd_collection:
+        get_parent().get_node("CoinText").margin_left+=coin_wiggle
+    else:
+        get_parent().get_node("CoinText").margin_left-=coin_wiggle
 
+    coin_odd_collection = not coin_odd_collection
+    get_parent().get_node("CoinText").add_text(str(coins_collected) + " out of " + str(coins_max) + " coins")
 
 func _physics_process(dt):
     move(dt)
+
+func _process(dt):
+    if Input.is_action_just_pressed("restart"):
+        reset_location()
+
+func reset_location():
+    var move_amount = checkpoint - get_global_transform().origin
+    global_translate(move_amount)
+    get_parent().get_node("PlayerCamera").global_translate(move_amount)
 
 func move(dt):
     direction = Vector3(0,0,0)
@@ -75,6 +103,7 @@ func move(dt):
     velocity = velocity.linear_interpolate(target_dir, move_accel*dt)
 
     var old_velocity = velocity
+
     velocity = move_and_slide(velocity,Vector3(0,1,0))
 
     rotate_x(velocity.z*roll_speed)
@@ -86,6 +115,9 @@ func move(dt):
         if previously_airborne:
             get_node("LandSound").play()
             previously_airborne = false
+            if Input.is_action_pressed("jump") and old_velocity.y<-min_bounce_speed:
+                # Bounce when jump key is pressed
+                velocity.y = -bounce_factor * old_velocity.y
     else:
         previously_airborne = true
 
@@ -93,11 +125,11 @@ func move(dt):
         velocity.y = jump_strength
         jumps_left-=1
         get_node("JumpSound").play()
+        get_node("Puff1").restart()
+
 
     if  get_global_transform().origin.y < pit_depth:
-        var move_amount = reset_position - get_global_transform().origin
-        global_translate(move_amount)
-        get_parent().get_node("PlayerCamera").global_translate(move_amount)
+        reset_location()
 
 
 

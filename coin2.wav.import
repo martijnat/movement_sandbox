@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/coin2.wav-ee1f5f0136bd621e6bb06bfbb02ec57f.sample"
+
+[deps]
+
+source_file="res://coin2.wav"
+source_md5="2321229cd18c6f218f0afe143dbcb7e9"
+
+dest_files=[ "res://.import/coin2.wav-ee1f5f0136bd621e6bb06bfbb02ec57f.sample" ]
+dest_md5="7a95ec672c17c620a12e3c8529059ad1"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

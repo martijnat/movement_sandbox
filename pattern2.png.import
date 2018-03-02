@@ -11,14 +11,14 @@ source_file="res://pattern2.png"
 source_md5="df3bbbb8599d421ead42bb278e6cf9c9"
 
 dest_files=[ "res://.import/pattern2.png-43633257628463a63507658ad23d67e4.s3tc.stex", "res://.import/pattern2.png-43633257628463a63507658ad23d67e4.etc2.stex" ]
-dest_md5="990f3bf4425a6d7e5dee635954008d89"
+dest_md5="e28c0cad1fdb2243fc61635298ed65d9"
 
 [params]
 
 compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
-compress/normal_map=0
+compress/normal_map=1
 flags/repeat=true
 flags/filter=true
 flags/mipmaps=true

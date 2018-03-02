@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -6,16 +6,18 @@
 [ext_resource path="res://Cube.tscn" type="PackedScene" id=4]
 [ext_resource path="res://PlayerCamera.gd" type="Script" id=5]
 [ext_resource path="res://Pillshape.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Coin.tscn" type="PackedScene" id=7]
+[ext_resource path="res://DejaVuSans.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="ProceduralSky" id=1]
 
 radiance_size = 4
-sky_top_color = Color( 0.0470588, 0.454902, 0.976471, 1 )
-sky_horizon_color = Color( 0.556863, 0.823529, 0.909804, 1 )
+sky_top_color = Color( 0.501961, 0.752941, 1, 1 )
+sky_horizon_color = Color( 0.972656, 0.961258, 0.96231, 1 )
 sky_curve = 0.25
 sky_energy = 1.0
-ground_bottom_color = Color( 0.101961, 0.145098, 0.188235, 1 )
-ground_horizon_color = Color( 0.482353, 0.788235, 0.952941, 1 )
+ground_bottom_color = Color( 1, 0.752941, 0.501961, 1 )
+ground_horizon_color = Color( 1, 1, 1, 1 )
 ground_curve = 0.01
 ground_energy = 1.0
 sun_color = Color( 1, 1, 1, 1 )
@@ -26,6 +28,7 @@ sun_angle_max = 100.0
 sun_curve = 0.05
 sun_energy = 16.0
 texture_size = 2
+_sections_unfolded = [ "Ground", "Sky" ]
 
 [sub_resource type="Environment" id=2]
 
@@ -35,19 +38,19 @@ background_sky_custom_fov = 0.0
 background_color = Color( 0, 0, 0, 1 )
 background_energy = 1.0
 background_canvas_max_layer = 0
-ambient_light_color = Color( 1, 1, 1, 1 )
+ambient_light_color = Color( 0.501961, 0.752941, 1, 1 )
 ambient_light_energy = 0.5
 ambient_light_sky_contribution = 1.0
-fog_enabled = false
-fog_color = Color( 0.5, 0.6, 0.7, 1 )
-fog_sun_color = Color( 1, 0.9, 0.7, 1 )
-fog_sun_amount = 0.0
+fog_enabled = true
+fog_color = Color( 1, 0.752941, 0.501961, 1 )
+fog_sun_color = Color( 1, 1, 1, 1 )
+fog_sun_amount = 0.5
 fog_depth_enabled = true
 fog_depth_begin = 10.0
 fog_depth_curve = 1.0
-fog_transmit_enabled = false
+fog_transmit_enabled = true
 fog_transmit_curve = 1.0
-fog_height_enabled = false
+fog_height_enabled = true
 fog_height_min = 0.0
 fog_height_max = 100.0
 fog_height_curve = 1.0
@@ -56,15 +59,15 @@ tonemap_exposure = 1.0
 tonemap_white = 1.0
 auto_exposure_enabled = false
 auto_exposure_scale = 1.0
-auto_exposure_min_luma = 0.05
-auto_exposure_max_luma = 8.0
-auto_exposure_speed = 0.1
+auto_exposure_min_luma = 1.0
+auto_exposure_max_luma = 1.0
+auto_exposure_speed = 1.0
 ss_reflections_enabled = false
 ss_reflections_max_steps = 64
 ss_reflections_fade_in = 0.15
 ss_reflections_fade_out = 2.0
 ss_reflections_depth_tolerance = 0.1
-ss_reflections_roughness = true
+ss_reflections_roughness = false
 ssao_enabled = false
 ssao_radius = 16.0
 ssao_intensity = 2.0
@@ -76,16 +79,16 @@ ssao_color = Color( 0, 1, 0.0390625, 1 )
 ssao_quality = 0
 ssao_blur = 3
 ssao_edge_sharpness = 4.0
-dof_blur_far_enabled = false
-dof_blur_far_distance = 40.0
-dof_blur_far_transition = 10.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 25.0
+dof_blur_far_transition = 25.0
 dof_blur_far_amount = 0.1
-dof_blur_far_quality = 0
-dof_blur_near_enabled = false
-dof_blur_near_distance = 2.0
-dof_blur_near_transition = 1.0
-dof_blur_near_amount = 1.0
-dof_blur_near_quality = 0
+dof_blur_far_quality = 1
+dof_blur_near_enabled = true
+dof_blur_near_distance = 10.0
+dof_blur_near_transition = 10.0
+dof_blur_near_amount = 0.2
+dof_blur_near_quality = 1
 glow_enabled = false
 glow_levels/1 = false
 glow_levels/2 = false
@@ -94,18 +97,43 @@ glow_levels/4 = false
 glow_levels/5 = true
 glow_levels/6 = false
 glow_levels/7 = false
-glow_intensity = 0.1
+glow_intensity = 0.05
 glow_strength = 1.0
-glow_bloom = 0.0
+glow_bloom = 1.0
 glow_blend_mode = 1
 glow_hdr_threshold = 1.0
 glow_hdr_scale = 2.0
 glow_bicubic_upscale = true
-adjustment_enabled = false
+adjustment_enabled = true
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
-_sections_unfolded = [ "Background", "Glow/levels" ]
+_sections_unfolded = [ "Ambient Light", "Background", "DOF Far Blur", "DOF Near Blur", "Fog", "Glow/levels" ]
+
+[sub_resource type="Theme" id=3]
+
+RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0, 0, 0, 1 )
+RichTextLabel/colors/selection_color = Color( 0, 0, 0, 0.8 )
+RichTextLabel/constants/line_separation = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+_sections_unfolded = [ "RichTextLabel", "RichTextLabel/colors" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 18
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 8 )
+_sections_unfolded = [ "Font", "Settings" ]
 
 [node name="Main" type="Spatial" index="0"]
 
@@ -117,7 +145,7 @@ transform = Transform( 1, -6.4058e-07, -8.43339e-08, -8.43339e-08, -0.258819, 0.
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
-light_indirect_energy = 0.5
+light_indirect_energy = 0.0
 light_negative = false
 light_specular = 0.5
 light_bake_mode = 2
@@ -137,7 +165,7 @@ directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
-_sections_unfolded = [ "Light", "Shadow", "Transform" ]
+_sections_unfolded = [ "Directional Shadow", "Light", "Shadow", "Transform" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
 
@@ -145,79 +173,86 @@ environment = SubResource( 2 )
 
 [node name="Player" parent="." index="2" instance=ExtResource( 2 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198284, 0, 0 )
 script = ExtResource( 3 )
 
-[node name="Cube" parent="." index="3" instance=ExtResource( 4 )]
+[node name="Cube3" parent="." index="3" instance=ExtResource( 4 )]
 
-transform = Transform( 12.7664, 0, 0, 0, 1, 0, 0, 0, 21.8991, 0, -1.93695, 0 )
+transform = Transform( 11.8953, 0, -7.95061, 1.63377, 0.935815, 7.19254, 4.33743, -0.352491, 19.0952, -15.1254, -13.998, 6.40451 )
 
-[node name="Cube3" parent="." index="4" instance=ExtResource( 4 )]
-
-transform = Transform( 11.8953, 0, -7.95061, 1.63377, 0.935815, 7.19254, 4.33743, -0.352491, 19.0952, -15.1254, -3.7556, 6.40451 )
-
-[node name="Cube7" parent="." index="5" instance=ExtResource( 4 )]
+[node name="Cube7" parent="." index="4" instance=ExtResource( 4 )]
 
 transform = Transform( 11.8953, 0, -7.95061, 2.97267, 0.767237, 13.087, 3.55608, -0.641364, 15.6554, -15.1254, 0.191964, 15.3458 )
 
-[node name="Cube8" parent="." index="6" instance=ExtResource( 4 )]
+[node name="Cube8" parent="." index="5" instance=ExtResource( 4 )]
 
 transform = Transform( 11.8953, 0, -7.95061, 4.01126, 0.501006, 17.6593, 2.32212, -0.865443, 10.223, -15.1254, 6.00501, 23.261 )
 
-[node name="Cube2" parent="." index="7" instance=ExtResource( 4 )]
+[node name="Cube2" parent="." index="6" instance=ExtResource( 4 )]
 
-transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, 12.9916, -0.905418, 2.12514 )
+transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, 21.0927, -1.37053, 7.75859 )
 
-[node name="Cube14" parent="." index="8" instance=ExtResource( 4 )]
+[node name="Cube14" parent="." index="7" instance=ExtResource( 4 )]
 
 transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, 12.9916, -14.6818, -12.9424 )
 
-[node name="Cube15" parent="." index="9" instance=ExtResource( 4 )]
+[node name="Cube15" parent="." index="8" instance=ExtResource( 4 )]
 
 transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, 5.2199, -22.9165, -5.85891 )
 
-[node name="Cube16" parent="." index="10" instance=ExtResource( 4 )]
+[node name="Cube16" parent="." index="9" instance=ExtResource( 4 )]
 
 transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, -2.46624, -31.5996, 2.12514 )
 
-[node name="Cube13" parent="." index="11" instance=ExtResource( 4 )]
+[node name="Cube13" parent="." index="10" instance=ExtResource( 4 )]
 
 transform = Transform( 7.15268, 0, 0, 0, 0.934313, 2.22711, 0, -0.356455, 5.83753, 23.9819, 2.94845, 20.7452 )
 
-[node name="Cube9" parent="." index="12" instance=ExtResource( 4 )]
+[node name="Cube9" parent="." index="11" instance=ExtResource( 4 )]
 
 transform = Transform( 35.7305, 0, 0, 0, 1, 0, 0, 0, 6.24794, 56.013, -0.905418, 2.12514 )
 
-[node name="Cube10" parent="." index="13" instance=ExtResource( 4 )]
+[node name="Cube10" parent="." index="12" instance=ExtResource( 4 )]
 
 transform = Transform( 35.7066, 0, 0.0954554, 0, 1, 0, -1.30575, 0, 2.61029, 56.013, 7.94779, 3.9169 )
 
-[node name="Cube11" parent="." index="14" instance=ExtResource( 4 )]
+[node name="Cube11" parent="." index="13" instance=ExtResource( 4 )]
 
 transform = Transform( 35.7305, 0, 0, 0, 6.22502, 1.05693, 0, -1.11122, 5.92092, 56.013, 3.29597, -8.88196 )
 
-[node name="Cube12" parent="." index="15" instance=ExtResource( 4 )]
+[node name="Cube12" parent="." index="14" instance=ExtResource( 4 )]
 
 transform = Transform( 35.6538, -0.413972, 0, 2.33915, 6.30986, 0, 0, 0, 6.01452, 56.013, 3.29597, 12.6858 )
 
-[node name="Cube4" parent="." index="16" instance=ExtResource( 4 )]
+[node name="Cube4" parent="." index="15" instance=ExtResource( 4 )]
 
 transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, -32.7988, -0.905418, 2.12514 )
 
-[node name="Cube18" parent="." index="17" instance=ExtResource( 4 )]
+[node name="Cube18" parent="." index="16" instance=ExtResource( 4 )]
 
 transform = Transform( 1, 0, 0, 0, 8, 0, 0, 0, 1, 28.937, 16.0239, -42.0959 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Cube5" parent="." index="18" instance=ExtResource( 4 )]
+[node name="Cube5" parent="." index="17" instance=ExtResource( 4 )]
 
 transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, -32.7988, -0.905418, -15.3486 )
 
-[node name="Cube6" parent="." index="19" instance=ExtResource( 4 )]
+[node name="Cube6" parent="." index="18" instance=ExtResource( 4 )]
 
 transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, -13.6641, -0.905418, -15.3486 )
 
-[node name="PlayerCamera" type="Camera" parent="." index="20"]
+[node name="Cube19" parent="." index="19" instance=ExtResource( 4 )]
+
+transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, 2.98315, -2.58418, 0.104506 )
+
+[node name="Cube20" parent="." index="20" instance=ExtResource( 4 )]
+
+transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, 2.98315, -4.2559, 16.7902 )
+
+[node name="Cube21" parent="." index="21" instance=ExtResource( 4 )]
+
+transform = Transform( 7.15268, 0, 0, 0, 1, 0, 0, 0, 6.24794, 2.98315, -2.58418, -16.6675 )
+
+[node name="PlayerCamera" type="Camera" parent="." index="22"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198284, 5.69647, 6.12012 )
 keep_aspect = 1
@@ -229,29 +264,91 @@ doppler_tracking = 0
 projection = 0
 current = false
 fov = 70.0
-size = 1.0
+size = 32.0
 near = 0.05
 far = 100.0
 script = ExtResource( 5 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Pillshape" parent="." index="21" instance=ExtResource( 6 )]
+[node name="Pillshape" parent="." index="23" instance=ExtResource( 6 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37346, 0, -13.4425 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37346, 0, 21.02 )
 
-[node name="Pillshape2" parent="." index="22" instance=ExtResource( 6 )]
+[node name="Pillshape2" parent="." index="24" instance=ExtResource( 6 )]
 
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 4.37346, 0, -33.1437 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Pillshape3" parent="." index="23" instance=ExtResource( 6 )]
+[node name="Pillshape3" parent="." index="25" instance=ExtResource( 6 )]
 
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 4.37346, 0, -45.6222 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Cube17" parent="." index="24" instance=ExtResource( 4 )]
+[node name="Cube17" parent="." index="26" instance=ExtResource( 4 )]
 
 transform = Transform( 16, 0, 0, 0, 16, 0, 0, 0, 16, 32.9699, -11.6317, -40.1871 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Coin" parent="." index="27" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.50432, -12.3055 )
+
+[node name="Coin2" parent="." index="28" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.17798, 3.50432, -12.3055 )
+
+[node name="Coin3" parent="." index="29" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09826, 3.50432, -12.3055 )
+
+[node name="Coin4" parent="." index="30" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.09826, 1.30945, -12.3055 )
+
+[node name="Coin5" parent="." index="31" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5378, 1.30945, -12.3055 )
+
+[node name="Coin6" parent="." index="32" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9134, 1.30945, -14.9343 )
+
+[node name="Coin7" parent="." index="33" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.51597, 1.30945, -14.9343 )
+
+[node name="Coin8" parent="." index="34" instance=ExtResource( 7 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2611, 3.01833, -13.5649 )
+
+[node name="CoinText" type="RichTextLabel" parent="." index="35"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 252.0
+margin_bottom = 118.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 6
+theme = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = false
+bbcode_text = ""
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = ""
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "Theme", "custom_fonts" ]
 
 
