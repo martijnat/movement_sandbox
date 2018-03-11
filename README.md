@@ -1,4 +1,10 @@
-Toyman Terrain Plugin
+Movement Sandbox
 =====================
 
-This is a heightmap-based terrain node for Godot Engine 3.0, based on [Zylann / godot_terrain_plugin](https://github.com/Zylann/godot_terrain_plugin).
+Simple 3d platformer made with [godot](https://godotengine.org). Jump around, collect coins.
+That's about all there is to it gameplay-wise.
+
+![Screenshot](screenshot3.png)
+![Screenshot](screenshot7.png)
+![Screenshot](screenshot0.png)
+
