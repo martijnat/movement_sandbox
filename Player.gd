@@ -24,8 +24,9 @@ var full_gravity = Vector3(0,-200,0)
 var jump_gravity = Vector3(0,-100,0)
 var jump_strength = 50
 var roll_speed = 0.007
+var bounce_speedboost = 3
 
-var pit_depth = -50
+var pit_depth = -100
 var checkpoint = Vector3(0,100,0)
 var bounce_factor = 1.0
 var min_bounce_speed = 30
@@ -34,9 +35,14 @@ var coins_collected = 0
 var coin_odd_collection = true
 var coin_wiggle = 4
 
+var floor_y = 0
+var floor_y_jump = 6
+var floor_y_dampening = 0.01
+
 func _ready():
     collect_coin(0)
     checkpoint = get_global_transform().origin
+    floor_y = checkpoint.y
 
 func collect_coin(amount):
     if amount>0:
@@ -44,6 +50,7 @@ func collect_coin(amount):
 #            get_node("background_music").autoplay = true
 #            get_node("background_music").play()
         get_node("CoinSound").play()
+        get_node("coin_effect").restart()
         coins_collected+=amount
     get_parent().get_node("CoinText").clear()
     if coin_odd_collection:
@@ -65,6 +72,7 @@ func reset_location():
     var move_amount = checkpoint - get_global_transform().origin
     global_translate(move_amount)
     get_parent().get_node("PlayerCamera").global_translate(move_amount)
+    floor_y = checkpoint.y
 
 func move(dt):
     direction = Vector3(0,0,0)
@@ -112,20 +120,25 @@ func move(dt):
 
     if is_on_floor():
         jumps_left = max_jumps
+        var df = pow(floor_y_dampening,dt)
+        floor_y = get_global_transform().origin.y*(1-df) + floor_y*df
         if previously_airborne:
             get_node("LandSound").play()
             previously_airborne = false
             if Input.is_action_pressed("jump") and old_velocity.y<-min_bounce_speed:
                 # Bounce when jump key is pressed
+                velocity = velocity*bounce_speedboost
+                get_node("puff_orange").restart()
                 velocity.y = -bounce_factor * old_velocity.y
     else:
+        floor_y = max(min(floor_y,get_global_transform().origin.y),get_global_transform().origin.y-floor_y_jump)
         previously_airborne = true
 
     if Input.is_action_just_pressed("jump") and jumps_left>0:
         velocity.y = jump_strength
         jumps_left-=1
         get_node("JumpSound").play()
-        get_node("Puff1").restart()
+        get_node("puff_white").restart()
 
 
     if  get_global_transform().origin.y < pit_depth:

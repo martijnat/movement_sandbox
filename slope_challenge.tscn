@@ -1,0 +1,111 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Cube.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Coin.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Pillshape.tscn" type="PackedScene" id=3]
+
+[node name="slope_challenge" type="Spatial" index="0"]
+
+[node name="Cube" parent="." index="0" instance=ExtResource( 1 )]
+
+transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -9.40822, 0 )
+
+[node name="Cube2" parent="." index="1" instance=ExtResource( 1 )]
+
+transform = Transform( 7.06917, -2.93522, 2.32621, 2.28258, 7.316, 2.29477, -2.96928, -1.36404, 7.30224, 3.26201, -8.95317, -3.68929 )
+
+[node name="Cube3" parent="." index="2" instance=ExtResource( 1 )]
+
+transform = Transform( 7.38516, -1.39076, 2.7432, 0.801731, 7.7592, 1.77541, -2.96928, -1.36404, 7.30224, 16.6478, -7.52502, -10.3463 )
+
+[node name="Cube4" parent="." index="3" instance=ExtResource( 1 )]
+
+transform = Transform( 7.25164, 1.17377, 3.16796, -1.61155, 7.79498, 0.800788, -2.96928, -1.36404, 7.30224, 31.3172, -7.52502, -10.3463 )
+
+[node name="Cube5" parent="." index="4" instance=ExtResource( 1 )]
+
+transform = Transform( 7.80999, -1.64969, 0.531625, 0.74186, 5.39938, 5.85631, -1.56644, -5.66792, 5.42411, 51.7428, -10.8433, -10.3463 )
+
+[node name="Cube6" parent="." index="5" instance=ExtResource( 1 )]
+
+transform = Transform( 7.80999, -1.64969, 0.531625, 1.61255, 7.81556, 0.562793, -0.635422, -0.442266, 7.96245, 70.6865, -10.8433, -10.3463 )
+
+[node name="Coin" parent="." index="6" instance=ExtResource( 2 )]
+
+[node name="Coin2" parent="." index="7" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2423, 4.59053, -8.63882 )
+
+[node name="Coin9" parent="." index="8" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4055, 4.56494, -8.63882 )
+
+[node name="Coin10" parent="." index="9" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7088, 4.5926, -8.63882 )
+
+[node name="Coin11" parent="." index="10" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61724, 4.58899, -8.63882 )
+
+[node name="Coin12" parent="." index="11" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1954, 4.44724, -8.63882 )
+
+[node name="Coin13" parent="." index="12" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5844, 2.86178, -8.63882 )
+
+[node name="Coin17" parent="." index="13" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5844, 5.80411, -8.63882 )
+
+[node name="Coin14" parent="." index="14" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.3964, 1.75608, -8.63882 )
+
+[node name="Coin18" parent="." index="15" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4059, 7.22149, -8.63882 )
+
+[node name="Coin3" parent="." index="16" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 71.3726, -0.288807, -6.0815 )
+
+[node name="Coin4" parent="." index="17" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 62.6529, -2.62489, -9.27835 )
+
+[node name="Coin5" parent="." index="18" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4979, 5.58363, 14.5119 )
+
+[node name="Coin6" parent="." index="19" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48.4375, 0.602236, 14.5119 )
+
+[node name="Coin7" parent="." index="20" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.7911, -3.77565, 14.5119 )
+
+[node name="Coin8" parent="." index="21" instance=ExtResource( 2 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7769, 4.13549, 14.5119 )
+
+[node name="Pillshape" parent="." index="22" instance=ExtResource( 3 )]
+
+transform = Transform( 3.99942, 0, 0.06839, 0, 4, 0, -0.06839, 0, 3.99942, 15.1828, -1.63907, 14.5584 )
+
+[node name="Pillshape2" parent="." index="23" instance=ExtResource( 3 )]
+
+transform = Transform( 3.99942, 0, 0.06839, 0, 4, 0, -0.06839, 0, 3.99942, 29.2458, -9.01023, 14.5584 )
+
+[node name="Pillshape3" parent="." index="24" instance=ExtResource( 3 )]
+
+transform = Transform( 3.99942, 0, 0.06839, 0, 4, 0, -0.06839, 0, 3.99942, 48.9744, -4.92862, 14.5584 )
+
+[node name="Pillshape4" parent="." index="25" instance=ExtResource( 3 )]
+
+transform = Transform( 3.99942, 0, 0.06839, 0, 4, 0, -0.06839, 0, 3.99942, 65.432, 0.221943, 14.5584 )
+
+

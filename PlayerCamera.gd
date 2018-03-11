@@ -3,9 +3,9 @@ extends Camera
 
 var collision_exception = [] # objects to ignore when autoturning , i.e. the player
 
-var camera_height = 10
-var camera_max_dist = camera_height*1.0
-var camera_min_dist = camera_height*1.0
+var camera_height = 6
+var camera_min_dist = camera_height*2.0
+var camera_max_dist = camera_height*2.0
 var min_angle = 0.2
 var max_angle = 1.6
 var camera_speed = 30
@@ -23,10 +23,8 @@ var autoturn_delay_autoturn = 0.2
 
 var offset = Vector3(0,0,0)
 var up = Vector3(0, 1, 0)
-var camera_dampening = 0.5
+var camera_dampening = 0.1
 var mouselook_speed = 0.07
-
-
 
 func _ready():
     collision_exception.append(get_parent().get_node("Player"))
@@ -82,6 +80,7 @@ func move(dt):
 
 func update_camera(dt):
     var player_pos = get_parent().get_node("Player").get_global_transform().origin
+    player_pos.y = get_parent().get_node("Player").floor_y
     var player_overhead = player_pos + Vector3(0,camera_height,0)
     var aim = get_global_transform().basis
 
@@ -111,7 +110,7 @@ func update_camera(dt):
         offset += aim.y*autoturn_speed*dt
 
     if !col_left.empty() and !col_right.empty() and !col_up.empty() and !col_down.empty():
-        offset -= aim.z*autoturn_speed*dt
+        offset += aim.z*autoturn_speed*dt
 
 
     var new_pos = get_global_transform().origin+offset*camera_dampening
@@ -124,8 +123,7 @@ func update_camera(dt):
         new_pos = player_overhead + camera_max_dist*camera_overhead_dir.normalized()
     if new_dist < camera_min_dist:
         new_pos = player_overhead + camera_min_dist*camera_overhead_dir.normalized()
-
     offset = offset * (1-camera_dampening)
-    look_at_from_position(new_pos,player_pos,up)
+    look_at_from_position(new_pos,player_pos + up,up)
 
 

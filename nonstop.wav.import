@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nonstop.wav-8128bc4f7f87291c491dacee7ef4f5ef.sample"
+
+[deps]
+
+source_file="res://nonstop.wav"
+source_md5="a1c76737f8423766ac193e87bb51befb"
+
+dest_files=[ "res://.import/nonstop.wav-8128bc4f7f87291c491dacee7ef4f5ef.sample" ]
+dest_md5="7f2caec3c685b62cc66d0082147bb403"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

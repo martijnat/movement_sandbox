@@ -73,6 +73,9 @@ points = PoolVector3Array( 0, 0, 1.5, 0, 0, 1.5, 0, 0, 1.5, 0, 0, 1.5, 0, 0, 1.5
 
 [node name="Pillshape" type="Spatial"]
 
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
+
 [node name="MeshInstance" type="MeshInstance" parent="." index="0"]
 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0626149 )
